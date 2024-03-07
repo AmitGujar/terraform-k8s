@@ -1,0 +1,31 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elastic
+spec:
+  version: 8.12.2
+  # volumeClaimDeletePolicy: DeleteOnScaledownOnly
+  nodeSets:
+  - name: cdp
+    count: 1
+    config:
+      # node.master: true
+      # node.data: true
+      # node.ingest: true
+      node.store.allow_mmap: false
+      # enabling anonymous access
+      xpack.security.authc:
+        anonymous:
+          username: anonymous
+          roles: superuser
+          authz_exception: false
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: gp2
