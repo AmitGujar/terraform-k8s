@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func callBack(cmd *exec.Cmd) {
+func CallBack(cmd *exec.Cmd) {
 	cmd.Dir = "../"
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
@@ -20,23 +20,23 @@ func callBack(cmd *exec.Cmd) {
 func Check() {
 	fmt.Println("Checking if terraform installed...")
 	cmd := exec.Command("terraform", "version")
-	callBack(cmd)
+	CallBack(cmd)
 }
 
 func Init() {
 	fmt.Println("Terraform init")
 	cmd := exec.Command("terraform", "init", "--upgrade")
-	callBack(cmd)
+	CallBack(cmd)
 }
 
 func Plan() {
 	fmt.Println("Generating terraform plan file")
-	cmd := exec.Command("terraform", "plan", "-out", "main.tfplan", "-var-file", "awssecret.tfvars")
-	callBack(cmd)
+	cmd := exec.Command("terraform", "plan", "-out", "main.tfplan")
+	CallBack(cmd)
 }
 
 func Apply() {
 	fmt.Println("Applying your configuration")
 	cmd := exec.Command("terraform", "apply", "main.tfplan")
-	callBack(cmd)
+	CallBack(cmd)
 }

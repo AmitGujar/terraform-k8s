@@ -1,12 +1,25 @@
 package main
 
 import (
-	"github.com/AmitGujar/terraform-template/scripts/pkgs/terraform"
+	"fmt"
+
+	"github.com/AmitGujar/terraform-k8s/scripts/pkgs/terraform"
 )
 
 func main() {
 	terraform.Check()
-	terraform.Init()
-	terraform.Plan()
-	terraform.Apply()
+	UserChoice()
+}
+
+func UserChoice() {
+	var choice string
+	fmt.Print("Do you want to perform apply = ")
+	fmt.Scan(&choice)
+	if choice == "y" {
+		terraform.Init()
+		terraform.Plan()
+		terraform.Apply()
+	} else {
+		terraform.DestroyResources()
+	}
 }
