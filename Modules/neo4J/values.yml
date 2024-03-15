@@ -19,7 +19,6 @@ volumes:
     dynamic:
       storageClassName: ebs-sc
 
-
 startupProbe:
   failureThreshold: 1000
   periodSeconds: 40

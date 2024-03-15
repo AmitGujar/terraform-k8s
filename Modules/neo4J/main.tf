@@ -23,16 +23,16 @@ resource "kubernetes_secret_v1" "name" {
   type = "kubernetes.io/tls"
 }
 
-resource "kubernetes_storage_class_v1" "storage_class" {
-  metadata {
-    name = "ebs-sc"
-  }
-  storage_provisioner    = "ebs.csi.aws.com"
-  reclaim_policy         = "Delete"
-  mount_options          = []
-  allow_volume_expansion = true
-  volume_binding_mode    = "WaitForFirstConsumer"
-}
+# resource "kubernetes_storage_class_v1" "storage_class" {
+#   metadata {
+#     name = "ebs-sc"
+#   }
+#   storage_provisioner    = "ebs.csi.aws.com"
+#   reclaim_policy         = "Delete"
+#   mount_options          = []
+#   allow_volume_expansion = true
+#   volume_binding_mode    = "WaitForFirstConsumer"
+# }
 
 
 # resource "kubernetes_persistent_volume_claim" "pvc" {
@@ -59,7 +59,6 @@ resource "helm_release" "neo4j" {
   chart      = "neo4j"
   repository = "https://helm.neo4j.com/neo4j"
   namespace  = "default"
-  # values     = [file("${path.module}/values.yml")]
-
-  depends_on = [kubernetes_storage_class_v1.storage_class]
+  values     = [file("${path.module}/values.yml")]
+  depends_on = [kubernetes_secret_v1.name]
 }

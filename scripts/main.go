@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/AmitGujar/terraform-k8s/scripts/pkgs/terraform"
+	"github.com/AmitGujar/terraform-boilerplate/scripts/pkgs/terraform"
 )
 
 func main() {
@@ -17,9 +17,9 @@ func UserChoice() {
 	fmt.Scan(&choice)
 	if choice == "y" {
 		terraform.Init()
-		terraform.Plan()
+		terraform.Plan("secret.tfvars")
 		terraform.Apply()
 	} else {
-		terraform.DestroyResources()
+		terraform.Destroy("secret.tfvars")
 	}
 }
