@@ -14,6 +14,11 @@ terraform {
       source  = "hashicorp/aws"
       version = ">=5.0"
     }
+
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "4.26.0"
+    }
   }
 }
 
@@ -29,4 +34,8 @@ provider "kubernetes" {
 
 provider "aws" {
   region = "ap-south-1"
+}
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
 }

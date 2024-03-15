@@ -1,1 +1,3 @@
-# this code will be updated in future
+variable "cloudflare_api_token" {
+  type = string
+}
