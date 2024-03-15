@@ -1,7 +1,9 @@
 resource "helm_release" "public-ingress" {
-  name             = "ingress"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "nginx-ingress-controller"
+  name = "ingress"
+  # repository       = "https://charts.bitnami.com/bitnami"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  # chart            = "nginx-ingress-controller"
+  chart            = "ingress-nginx"
   namespace        = "public-ingress"
   create_namespace = true
 
