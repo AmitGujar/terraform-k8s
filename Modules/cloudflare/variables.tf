@@ -5,3 +5,8 @@ variable "cloudflare_zone_id" {
 variable "ingress_ip" {
   type = string
 }
+
+variable "comment" {
+  default = "Managed by Terraform"
+  type    = string
+}

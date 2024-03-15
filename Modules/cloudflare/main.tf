@@ -13,6 +13,7 @@ resource "cloudflare_record" "argo-server" {
   name    = "argo-server"
   proxied = false
   value   = var.ingress_ip
+  comment = var.comment
 }
 
 resource "cloudflare_record" "elastic" {
@@ -21,4 +22,5 @@ resource "cloudflare_record" "elastic" {
   name    = "elastic"
   proxied = false
   value   = var.ingress_ip
+  comment = var.comment
 }
