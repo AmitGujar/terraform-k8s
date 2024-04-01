@@ -18,7 +18,7 @@ output "cert_mgr_name" {
 #   value = module.route53.elastic_record
 # }
 
-output "cl_argo_server_record" {
+  output "cl_argo_server_record" {
   value = module.cloudflare.cl_argo_server_record
 }
 
