@@ -13,6 +13,6 @@ data "aws_route53_zone" "primary" {
   name = "9-tails-fox.tech"
 }
 
-data "cloudflare_zone" "akstest" {
-  name = "akstest.tech"
-}
+# data "cloudflare_zone" "akstest" {
+#   name = "akstest.tech"
+# }

@@ -19,7 +19,7 @@ resource "cloudflare_record" "argo-server" {
 resource "cloudflare_record" "elastic" {
   zone_id = var.cloudflare_zone_id
   type    = "A"
-  name    = "ingress"
+  name    = "frontend"
   proxied = false
   value   = var.ingress_ip
   comment = var.comment

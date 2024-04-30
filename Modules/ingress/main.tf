@@ -15,4 +15,6 @@ resource "helm_release" "public-ingress" {
     name  = "controller.service.externalTrafficPolicy"
     value = "Local"
   }
+
+  # values = [file("${path.module}/values.yaml")] #! uncomment this only if you are using azure service 
 }
