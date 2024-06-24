@@ -1,5 +1,5 @@
 output "ingress_hostname" {
-  value = data.kubernetes_service.public_ingress.status.0.load_balancer.0.ingress.0.hostname
+  value = data.kubernetes_service.public_ingress.status.0.load_balancer.0.ingress.0.ip
 }
 
 # output "cert_mgr_name" {

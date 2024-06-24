@@ -16,6 +16,7 @@ resource "helm_release" "public-ingress" {
   #   value = "Local"
   # }
 
+# this properties will enable the internal load balancer for the ingress controller
   set {
     name  = "controller.service.internal.enabled"
     value = true
