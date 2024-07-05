@@ -19,11 +19,11 @@ module "certManager" {
 # }
 
 
-# module "cloudflare" {
-#   source             = "./Modules/cloudflare"
-#   cloudflare_zone_id = data.cloudflare_zone.akstest.id
-#   ingress_ip         = data.kubernetes_service.public_ingress.status.0.load_balancer.0.ingress.0.ip
-# }
+module "cloudflare" {
+  source             = "./Modules/cloudflare"
+  cloudflare_zone_id = data.cloudflare_zone.akstest.id
+  ingress_ip         = data.kubernetes_service.public_ingress.status.0.load_balancer.0.ingress.0.ip
+}
 
 # module "elastic" {
 #   source = "./Modules/elastic"

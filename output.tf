@@ -18,10 +18,6 @@ output "ingress_hostname" {
 #   value = module.route53.elastic_record
 # }
 
-# output "cl_argo_server_record" {
-#   value = module.cloudflare.cl_argo_server_record
-# }
-
-# output "cl_elastic_record" {
-#   value = module.cloudflare.cl_elastic_record
-# }
+output "jenkins_dns" {
+  value = module.cloudflare.jenkins_record
+}

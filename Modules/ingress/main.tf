@@ -11,21 +11,25 @@ resource "helm_release" "public-ingress" {
     name  = "controller.service.type"
     value = "LoadBalancer"
   }
+  set {
+    name  = "controller.service.externalTrafficPolicy"
+    value = "Local"
+  }
+
+  set {
+    name = "tcp.9092"
+    value = "debezium-cluster-kafka-bootstrap:9092"
+  }
+# this properties will enable the internal load balancer for the ingress controller
   # set {
-  #   name  = "controller.service.externalTrafficPolicy"
-  #   value = "Local"
+  #   name  = "controller.service.internal.enabled"
+  #   value = true
   # }
 
-# this properties will enable the internal load balancer for the ingress controller
-  set {
-    name  = "controller.service.internal.enabled"
-    value = true
-  }
-
-  set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"
-    value = "true"
-  }
+  # set {
+  #   name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"
+  #   value = "true"
+  # }
 
   # values = [file("${path.module}/values.yaml")] #! uncomment this only if you are using azure service 
 }

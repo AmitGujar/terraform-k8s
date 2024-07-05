@@ -6,10 +6,10 @@ terraform {
   }
 }
 
-resource "cloudflare_record" "elastic" {
+resource "cloudflare_record" "jenkins" {
   zone_id = var.cloudflare_zone_id
   type    = "A"
-  name    = "elastic"
+  name    = "jenkins"
   proxied = false
   value   = var.ingress_ip
   comment = var.comment
