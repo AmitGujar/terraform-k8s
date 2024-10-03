@@ -8,9 +8,9 @@ data "kubernetes_service" "public_ingress" {
   depends_on = [module.nginxIngress]
 }
 
-# data "aws_route53_zone" "primary" {
-#   name = "9-tails-fox.tech"
-# }
+data "aws_route53_zone" "primary" {
+  name = "9-tails-fox.tech"
+}
 
 data "cloudflare_zone" "akstest" {
   name = "akstest.tech"
